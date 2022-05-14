@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background: #0c0b0b;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, serif;
+      margin-top: 50px;
+    }
+
+    input {
+      width: 260px;
+      height: 40px;
+      padding: 0 20px;
+      margin-bottom: 20px;
+      font-family: Arial, serif;
+      font-size: 16px;
+      background-color: lightyellow;
+      border: solid 1px #CAC2A8;
+      outline: none;
+    }
+
+    button {
+      height: 40px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      font-family: Arial, serif;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: #d19638;
+      color: black;
+      border: none;
+      cursor: pointer;
+      padding: 10px 20px;
+    }
+
+    #place {
+      font-size: 40px;
+      font-weight: bold;
+      color: #CAC2A8;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="text" value="">
+  <button id="tranform">transform</button>
+
+  <div id="place"></div>
+  <script>
+    const letters = {
+      "а" : "闩",
+      "б" : "万",
+      "в" : "乃",
+      "г" : "厂",
+      "д" : "亼",
+      "е" : "巨",
+      "ё" : "庄",
+      "ж" : "水",
+      "з" : "彐",
+      "и" : "凵",
+      "й" : "凵",
+      "к" : "片",
+      "л" : "人",
+      "м" : "从",
+      "н" : "卄",
+      "о" : "囗",
+      "п" : "冂",
+      "р" : "尸",
+      "с" : "匚",
+      "т" : "丁",
+      "у" : "丫",
+      "ф" : "中",
+      "х" : "乂",
+      "ц" : "厶",
+      "ч" : "丩",
+      "ш" : "山",
+      "щ" : "山",
+      "ъ" : "力",
+      "ы" : "劜",
+      "ь" : "力",
+      "э" : "刁",
+      "ю" : "扣",
+      "я" : "习",
+
+      "a" : "闩",
+      "b" : "乃",
+      "c" : "匚",
+      "d" : "刀",
+      "e" : "巨",
+      "f" : "下",
+      "g" : "厶",
+      "h" : "卄",
+      "i" : "丨",
+      "j" : "丿",
+      "k" : "片",
+      "l" : "乚",
+      "m" : "从",
+      "n" : "冂",
+      "o" : "囗",
+      "p" : "尸",
+      "q" : "曰",
+      "r" : "尺",
+      "s" : "丂",
+      "t" : "丁",
+      "u" : "凵",
+      "v" : "丷",
+      "w" : "山",
+      "x" : "乂",
+      "y" : "丫",
+      "z" : "乙"
+    }
+
+    function transformString(text) {
+      let result = '';
+
+      for (const element of text) {
+        const qlElement = letters[element.toLowerCase()];
+        if (element && typeof qlElement === 'string') {
+          result += qlElement;
+        } else {
+          result += `${element}`;
+        }
+      }
+
+      return result;
+    }
+
+    let text = document.querySelector("#text");
+    let button = document.querySelector("#tranform");
+    let place = document.querySelector("#place");
+
+
+    function modifyText() {
+      place.textContent = transformString(text.value);
+      console.log(transformString(text.value));
+    }
+
+    button.addEventListener("click", modifyText, false);
+  </script>
+</body>
+</html>
